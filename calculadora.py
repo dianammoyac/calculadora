@@ -29,11 +29,14 @@ def seno(grados: float) -> float:
     radianes = math.radians(grados)  # Conversión de grados a radianes
     return math.sin(radianes)
 
+def elevar_al_cubo(n: float) -> float:
+    return n ** 3
+
 
 def mostrar_menu():
-    print("\n" + "=" * 40)
+    print("\n" + "=" * 45)
     print("    🧮 CALCULADORA BÁSICA")
-    print("=" * 40)
+    print("=" * 45)
     print("1️⃣  Sumar")
     print("2️⃣  Restar")
     print("3️⃣  Multiplicar")
@@ -41,22 +44,23 @@ def mostrar_menu():
     print("5️⃣  Factorial")
     print("6️⃣  Raíz cuadrada")
     print("7️⃣  Seno (en grados)")
-    print("8️⃣  Salir")
-    print("=" * 40)
+    print("8️⃣  Elevar al cubo")
+    print("9️⃣  Salir")
+    print("=" * 45)
 
 
 def ejecutar_calculadora():
     while True:
         mostrar_menu()
-        opcion = input("Elige una opción (1-8): ")
+        opcion = input("Elige una opción (1-9): ")
 
-        if opcion == "8":
+        if opcion == "9":
             print("¡Gracias por usar la calculadora! Hasta pronto.")
             break
 
         
-        if opcion not in {"1", "2", "3", "4", "5", "6", "7","8"}:
-            print("⚠️  Opción no válida. Intenta de nuevo.")
+        if opcion not in {"1", "2", "3", "4", "5", "6", "7","8","9"}:
+            print("Opción no válida. Intenta de nuevo.")
             continue
 
         try:
@@ -93,13 +97,18 @@ def ejecutar_calculadora():
                 grados = float(input("Ingrese el ángulo en grados: "))
                 resultado = seno(grados)
                 print(f"✅ El seno de {grados}° es: {resultado}\n")
+            
+            elif opcion == "8":
+                n = float(input("Ingrese un número: "))
+                resultado = elevar_al_cubo(n)
+                print(f"✅ {n} elevado al cubo es: {resultado}\n")
 
             else:
-                print("Opción no válida. Intenta de nuevo.\n")
+                print("Opción no válida. Intentalo de nuevo.\n")
     
 
         except ValueError as e:
-            print(f"❌ Error: {e}\n")
+            print(f" Error: {e}\n")
 
 
 if __name__ == "__main__":
