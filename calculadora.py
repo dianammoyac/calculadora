@@ -25,32 +25,37 @@ def raiz_cuadrada(n: float) -> float:
         raise ValueError("No se puede calcular la raíz cuadrada de un número negativo.")
     return math.sqrt(n)
 
+def seno(grados: float) -> float:
+    radianes = math.radians(grados)  # Conversión de grados a radianes
+    return math.sin(radianes)
+
 
 def mostrar_menu():
-    print("\n" + "=" * 35)
+    print("\n" + "=" * 40)
     print("    🧮 CALCULADORA BÁSICA")
-    print("=" * 35)
+    print("=" * 40)
     print("1️⃣  Sumar")
     print("2️⃣  Restar")
     print("3️⃣  Multiplicar")
     print("4️⃣  Dividir")
     print("5️⃣  Factorial")
     print("6️⃣  Raíz cuadrada")
-    print("7️⃣  Salir")
-    print("=" * 35)
+    print("7️⃣  Seno (en grados)")
+    print("8️⃣  Salir")
+    print("=" * 40)
 
 
 def ejecutar_calculadora():
     while True:
         mostrar_menu()
-        opcion = input("👉 Elige una opción (1-7): ")
+        opcion = input("Elige una opción (1-8): ")
 
-        if opcion == "7":
-            print("👋 ¡Gracias por usar la calculadora! Hasta pronto.")
+        if opcion == "8":
+            print("¡Gracias por usar la calculadora! Hasta pronto.")
             break
 
         
-        if opcion not in {"1", "2", "3", "4", "5", "6"}:
+        if opcion not in {"1", "2", "3", "4", "5", "6", "7","8"}:
             print("⚠️  Opción no válida. Intenta de nuevo.")
             continue
 
@@ -84,8 +89,13 @@ def ejecutar_calculadora():
                 resultado = raiz_cuadrada(n)
                 print(f"✅ La raíz cuadrada de {n} es: {resultado}\n")
 
+            elif opcion == "7":
+                grados = float(input("Ingrese el ángulo en grados: "))
+                resultado = seno(grados)
+                print(f"✅ El seno de {grados}° es: {resultado}\n")
+
             else:
-                print("⚠️  Opción no válida. Intenta de nuevo.\n")
+                print("Opción no válida. Intenta de nuevo.\n")
     
 
         except ValueError as e:
